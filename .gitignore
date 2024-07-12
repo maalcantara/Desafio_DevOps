@@ -1,0 +1,9 @@
+# Terraform files
+*.tfstate
+*.tfstate.backup
+.terraform/
+terraform.tfvars
+
+# Directory for local Terraform CLI configuration
+.terraformrc
+terraform.rc
