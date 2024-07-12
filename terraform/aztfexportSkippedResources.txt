@@ -1,0 +1,8 @@
+Following resources are marked to be skipped:
+
+- /subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps/maintenanceConfigurations/aksManagedAutoUpgradeSchedule
+- /subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps/maintenanceConfigurations/aksManagedNodeOSUpgradeSchedule
+- /subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops/blobServices/default
+- /subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops/fileServices/default
+- /subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops/queueServices/default
+- /subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops/tableServices/default

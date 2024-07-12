@@ -1,0 +1,42 @@
+{
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps",
+		"resource_type": "azurerm_resource_group",
+		"resource_name": "res-0"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps",
+		"resource_type": "azurerm_kubernetes_cluster",
+		"resource_name": "res-1"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps/agentPools/agentpool": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps/agentPools/agentpool",
+		"resource_type": "azurerm_kubernetes_cluster_node_pool",
+		"resource_name": "res-2"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Network/virtualNetworks/vNET_DesafioDevOps": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Network/virtualNetworks/vNET_DesafioDevOps",
+		"resource_type": "azurerm_virtual_network",
+		"resource_name": "res-5"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Network/virtualNetworks/vNET_DesafioDevOps/subnets/AzureFirewallSubnet": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Network/virtualNetworks/vNET_DesafioDevOps/subnets/AzureFirewallSubnet",
+		"resource_type": "azurerm_subnet",
+		"resource_name": "res-6"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Network/virtualNetworks/vNET_DesafioDevOps/subnets/subNET_DesafioDevOps": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Network/virtualNetworks/vNET_DesafioDevOps/subnets/subNET_DesafioDevOps",
+		"resource_type": "azurerm_subnet",
+		"resource_name": "res-7"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops": {
+		"resource_id": "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops",
+		"resource_type": "azurerm_storage_account",
+		"resource_name": "res-8"
+	},
+	"/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.Storage/storageAccounts/sadesafiodevops/blobServices/default/containers/conteinerdesafiodevops": {
+		"resource_id": "https://sadesafiodevops.blob.core.windows.net/conteinerdesafiodevops",
+		"resource_type": "azurerm_storage_container",
+		"resource_name": "res-10"
+	}
+}
