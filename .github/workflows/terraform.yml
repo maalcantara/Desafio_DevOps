@@ -27,10 +27,13 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Terraform Init
+      working-directory: ./Terraform  # Especifica o diretório dos arquivos Terraform
       run: terraform init
 
     - name: Terraform Validate
+      working-directory: ./Terraform  # Especifica o diretório dos arquivos Terraform
       run: terraform validate
 
     - name: Terraform Plan
+      working-directory: ./Terraform  # Especifica o diretório dos arquivos Terraform
       run: terraform plan
