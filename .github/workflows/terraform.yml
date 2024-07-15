@@ -8,6 +8,12 @@ on:
     branches:
       - main
 
+env:
+        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+        ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -36,13 +42,4 @@ jobs:
 
     - name: Terraform Plan
       working-directory: ./terraform
-      run: terraform plan -var 'client_id=${{ secrets.ARM_CLIENT_ID }}' -var 'client_secret=${{ secrets.ARM_CLIENT_SECRET }}' -var 'subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}' -var 'tenant_id=${{ secrets.ARM_TENANT_ID }}' -out=deploy_plan.tfplan
-      env:
-        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-        ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-        ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-        TF_VAR_client_id: ${{ secrets.ARM_CLIENT_ID }}
-        TF_VAR_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}
-        TF_VAR_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-        TF_VAR_tenant_id: ${{ secrets.ARM_TENANT_ID }}
+      run: terraform plan -out=deploy_plan.tfplan
