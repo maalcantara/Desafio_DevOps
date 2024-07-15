@@ -48,8 +48,8 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: deploy_plan
-        path: ./terraform/deploy_plan
+        path: ./terraform/deploy_plan.tfplan
 
     - name: Terraform Apply
       working-directory: ./terraform
-      run: terraform apply -auto-approve deploy_plan
+      run: terraform apply -auto-approve ./deploy_plan.tfplan
