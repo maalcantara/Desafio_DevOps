@@ -43,3 +43,7 @@ jobs:
     - name: Terraform Plan
       working-directory: ./terraform
       run: terraform plan -out=deploy_plan.tfplan
+
+    - name: Terraform Apply
+      working-directory: ./terraform 
+      run: terraform apply -auto-approve deploy_plan

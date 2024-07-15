@@ -11,6 +11,7 @@ resource "azurerm_kubernetes_cluster" "res-1" {
   default_node_pool {
     name    = "agentpool"
     vm_size = "Standard_DS2_v2"
+    node_count = 1
     upgrade_settings {
       max_surge = "10%"
     }
@@ -40,18 +41,7 @@ resource "azurerm_kubernetes_cluster" "res-1" {
     azurerm_resource_group.res-0,
   ]
 }
-resource "azurerm_kubernetes_cluster_node_pool" "res-2" {
-  kubernetes_cluster_id = "/subscriptions/5de99f93-a553-4f56-a986-cb654be7ffaf/resourceGroups/rg_DesafioDevOps/providers/Microsoft.ContainerService/managedClusters/cluster_DesafioDevOps"
-  mode                  = "System"
-  name                  = "agentpool"
-  vm_size               = "Standard_DS2_v2"
-  upgrade_settings {
-    max_surge = "10%"
-  }
-  depends_on = [
-    azurerm_kubernetes_cluster.res-1,
-  ]
-}
+
 resource "azurerm_virtual_network" "res-5" {
   address_space       = ["10.0.0.0/16"]
   location            = "centralus"
@@ -93,5 +83,5 @@ resource "azurerm_storage_account" "res-8" {
 }
 resource "azurerm_storage_container" "res-10" {
   name                 = "conteinerdesafiodevops"
-  storage_account_name = "sadesafiodevops"
+  storage_account_name = azurerm_storage_account.res-8.name
 }
