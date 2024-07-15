@@ -36,7 +36,7 @@ jobs:
 
     - name: Terraform Plan
       working-directory: ./terraform
-      run: terraform plan
+      run: terraform plan -var 'client_id=${{ secrets.ARM_CLIENT_ID }}' -var 'client_secret=${{ secrets.ARM_CLIENT_SECRET }}' -var 'subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}' -var 'tenant_id=${{ secrets.ARM_TENANT_ID }}' -out=deploy_plan.tfplan
       env:
         ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
         ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
