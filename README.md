@@ -39,3 +39,5 @@ teste1 terraform
 teste2 terraform
 
 teste3 terraform apply -auto-approve
+
+teste4 terraform apply -auto-approve
