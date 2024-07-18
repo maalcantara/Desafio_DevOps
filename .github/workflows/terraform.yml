@@ -40,6 +40,22 @@ jobs:
       working-directory: ./terraform
       run: terraform validate
 
+      # verifica se o resource group já existe. Se já, dar o destroy pra depois apply
+    - name: Terraform Check if resource exists
+      id: check_resource
+      working-directory: ./terraform
+      run: |
+        if terraform show -json | jq '.values.root_module.resources[] | select(.type == "azurerm_resource_roup")' > /dev/null; then
+          echo "::set-output name=exists::true"
+        else
+          echo "::set-output name=exists::false"
+        fi
+
+    - name: Terraform Destroy
+      if: steps.check_resource.outputs.exists == 'true'
+      working-directory: ./terraform
+      run: terraform destroy -auto-approve
+
     - name: Terraform Plan
       working-directory: ./terraform
       run: terraform plan -out=deploy_plan.tfplan
