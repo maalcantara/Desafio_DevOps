@@ -13,7 +13,6 @@ env:
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-  RESOURCE_GROUP_NAME: rg_DesafioDevOps
 
 jobs:
   terraform:
@@ -33,24 +32,13 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Check Resource Group
-      id: check_rg
-      run: |
-        if az group show --name ${{ env.RESOURCE_GROUP_NAME }} --subscription ${{ secrets.ARM_SUBSCRIPTION_ID }}; then
-          echo "exists=true" >> $GITHUB_ENV
-        else
-          echo "exists=false" >> $GITHUB_ENV
-        fi
-
     - name: Terraform Init for Destroy
-      if: env.exists == 'true'
       working-directory: ./terraform
       run: terraform init
 
     - name: Terraform Destroy
-      if: env.exists == 'true'
       working-directory: ./terraform
-      run: terraform destroy -auto-approve
+      run: terraform destroy -auto-approve || echo "No resources to destroy"
 
     - name: Terraform Init
       working-directory: ./terraform
