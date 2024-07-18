@@ -13,6 +13,7 @@ env:
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  RESOURCE_GROUP_NAME: rg_DesafioDevOps
 
 jobs:
   terraform:
@@ -32,6 +33,25 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Check Resource Group
+      id: check_rg
+      run: |
+        if az group show --name ${{ env.RESOURCE_GROUP_NAME }} --subscription ${{ secrets.ARM_SUBSCRIPTION_ID }}; then
+          echo "exists=true" >> $GITHUB_ENV
+        else
+          echo "exists=false" >> $GITHUB_ENV
+        fi
+
+    - name: Terraform Init for Destroy
+      if: env.exists == 'true'
+      working-directory: ./terraform
+      run: terraform init
+
+    - name: Terraform Destroy
+      if: env.exists == 'true'
+      working-directory: ./terraform
+      run: terraform destroy -auto-approve
+
     - name: Terraform Init
       working-directory: ./terraform
       run: terraform init
@@ -39,27 +59,6 @@ jobs:
     - name: Terraform Validate
       working-directory: ./terraform
       run: terraform validate
-
-      # verifica se o resource group já existe. Se já, dar o destroy pra depois apply
-    - name: Terraform Check if resource exists
-      id: check_resource
-      working-directory: ./terraform
-      run: |
-        if terraform show -json | jq '.values.root_module.resources[] | select(.type == "azurerm_resource_group")' > /dev/null; then
-          echo "::set-output name=exists::true"
-        else
-          echo "::set-output name=exists::false"
-        fi
-
-    - name: Terraform Import Resource Group
-      if: steps.check_resource.outputs.exists == 'true'
-      working-directory: ./terraform
-      run: terraform import azurerm_resource_group.res-0 /subscriptions/${{ secrets.ARM_SUBSCRIPTION_ID }}/resourceGroups/rg_DesafioDevOps
-
-    - name: Terraform Destroy
-      if: steps.check_resource.outputs.exists == 'true'
-      working-directory: ./terraform
-      run: terraform destroy -auto-approve
 
     - name: Terraform Plan
       working-directory: ./terraform
@@ -74,4 +73,3 @@ jobs:
     - name: Terraform Apply
       working-directory: ./terraform
       run: terraform apply -auto-approve ./deploy_plan.tfplan
-
