@@ -49,3 +49,5 @@ teste6 terraform apply -auto-approve
 teste7 terraform apply -auto-approve com condicional
 
 teste8 terraform apply -auto-approve
+
+teste9 terraform apply -auto-approve
